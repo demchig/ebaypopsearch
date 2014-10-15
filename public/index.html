@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Popular Items by Category - eBay</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  </head>
+  <body>
+    <div class="container">
+
+    <h1>Popular Items by SiteID / Category</h1>
+
+    <form class="form-horizontal" role="form" data-bind="submit: loadPopularItems">
+
+    <div class="form-group">
+    <label for="select-site" class="col-sm-2 control-label">Site</label>
+    <div class="col-sm-10">
+    <select id="select-site" data-bind="foreach: sites, value:siteId" class="form-control">
+      <option value="" data-bind="attr:{value: id}, text: name"></option>
+    </select>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label for="select-category" class="col-sm-2 control-label">Category</label>
+    <div class="col-sm-10">
+    <select id="select-category" data-bind="foreach: categories, value:categoryId" class="form-control">
+      <option value="" data-bind="attr:{value: id}, text: title"></option>
+    </select>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label for="select-category" class="col-sm-2 control-label">Keyword</label>
+    <div class="col-sm-10">
+    <input data-bind="value: keyword" placeholder="enter keyword here" type="text" class="form-control" name="keyword" value="akb48"/>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <button id="submit-button" class="btn btn-primary" type="submit">Submit</button>
+    </div>
+    </div>
+
+    </form>
+
+    <div data-bind="foreach: sitePopItems">
+      
+      <div>
+        <h3 data-bind="text : siteName">Site</h3>
+      </div>
+
+      <div data-bind="foreach: popItems">
+      
+      <table class="table table-striped">
+      <tbody>
+      <tr>
+        <td><img src="" data-bind="attr: { src: GalleryURL, title: ItemID }" ></td>
+        <td>
+          <h4 data-bind="text: Title">Title  </h4>
+          <table>
+          <tbody>
+          <tr> <th>ListingType</th><td data-bind="text: ListingType">ListingType  </td><tr> 
+          <tr> <th>PrimaryCategoryName</th><td data-bind="text: PrimaryCategoryName">PrimaryCategoryName  </td><tr> 
+          <tr> <th>BidCount</th><td data-bind="text: BidCount">BidCount  </td><tr> 
+          <tr> <th>WatchCount</th><td data-bind="text: WatchCount">WatchCount  </td><tr> 
+          </tbody>
+          </table>
+        </td>
+        <td>
+          <a href="#" class="btn btn-default" role="button" data-bind="attr: { href: ViewItemURLForNaturalSearch, title: ItemID }" target="_blank">
+                  <span class="glyphicon glyphicon-new-window"></span>
+                  View
+                </a>
+        </td>
+      </tr>
+      </tbody>
+      </table>
+
+      </div>
+
+    </div>
+ 	
+
+  </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/knockout-3.1.0.js"></script>
+    <script src="javascripts/consts.js"></script>
+    <script src="javascripts/main.js"></script>
+
+	</script>
+  </body>
+</html>
